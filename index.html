@@ -45,8 +45,10 @@
             .then(response => response.json())
             .then(data => {
                 // console.log(data);
+                // console.log(data.weather[0].description);
                 document.getElementById('nameOfTheLocation').innerText=data.name;
                 document.getElementById('temperatureOfTheLocation').innerText=data.main.temp;
+                document.getElementById('skySituationIconText').innerText=data.weather[0].description;
             })
             .catch(err => {
                 // console.error(err);
