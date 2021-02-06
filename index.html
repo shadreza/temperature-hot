@@ -37,14 +37,14 @@
     </div>
 
     <script>
-        const byDefaultLocationFromInput = "dhaka";
+        const byDefaultLocationFromInput = "Bangladesh";
         function updateWeather(locationFromInput){
             const options = {method: 'GET'};
             const linkToBeSent = 'http://api.openweathermap.org/data/2.5/weather?q='+locationFromInput+',&units=metric&APPID=0442c01bdf2fe9c665bcace90e1c1f8a'
             fetch(linkToBeSent, options)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 document.getElementById('nameOfTheLocation').innerText=data.name;
                 document.getElementById('temperatureOfTheLocation').innerText=data.main.temp;
             })
