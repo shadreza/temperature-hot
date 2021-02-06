@@ -44,7 +44,7 @@
             fetch(linkToBeSent, options)
             .then(response => response.json())
             .then(data => {
-                // console.log(data);
+                console.log(data);
                 document.getElementById('nameOfTheLocation').innerText=data.name;
                 document.getElementById('temperatureOfTheLocation').innerText=data.main.temp;
             })
@@ -55,15 +55,24 @@
             });
         }
         updateWeather(byDefaultLocationFromInput);
-        document.getElementById('buttonForSearching').addEventListener('click',function(){
+        function internalWorksForUpdating(){
             const locationSearched = document.getElementById('locationSearchedFor').value;
             if(locationSearched==''){
                 alert('Please Insert A Valid Location');
                 return;
             }
             updateWeather(locationSearched);
+        }
+        document.getElementById('buttonForSearching').addEventListener('click',function(){
+            const locationSearched = document.getElementById('locationSearchedFor').value;
+            internalWorksForUpdating();
         })
-        
+        document.getElementById('locationSearchedFor').addEventListener('keydown',function(event){
+            if(event.keyCode===13){
+                event.preventDefault();
+                internalWorksForUpdating();
+            }
+        })
     </script>
 
 </body>
